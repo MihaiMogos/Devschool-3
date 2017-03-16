@@ -1,21 +1,16 @@
 package ro.isr.devschool.poo.chess;
 
 /**
- * Created by Mucefix on 14/03/17.
+ * Created by scipianus on 14-Mar-17.
  */
 public class Queen extends Piece {
-
-    public Queen(PieceColor color, Square placeAt){
-        super(color, placeAt, false);
-    }
-
     @Override
     public Square[] validMoves() {
         return new Square[0];
     }
 
     @Override
-    public Square[] attackSquares() {
+    public Square[] atackSquares() {
         return new Square[0];
     }
 
