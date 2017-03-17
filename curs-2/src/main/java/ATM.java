@@ -1,73 +1,46 @@
-import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
-import java.util.Scanner;
-
-@AllArgsConstructor
+@NoArgsConstructor
 public class ATM {
-    private static int AVAILABLE_AMOUNT = 1000;
-    private static ArrayList<Integer> optiuniRetragere = new ArrayList<>();
+    private static BankDatabase bankDatabase;
+    private static Screen screen;
+    private static Keypad keypad;
 
-    static{
-        optiuniRetragere.add(20);
-        optiuniRetragere.add(40);
-        optiuniRetragere.add(60);
-        optiuniRetragere.add(100);
-        optiuniRetragere.add(200);
+    static {
+        bankDatabase = new BankDatabase();
+        screen = new Screen();
+        keypad = new Keypad();
     }
 
-    /* ATM-ul foloseste un database al bancii */
-    private static BankDatabase bankDatabase = new BankDatabase();
-    private static Screen ecran = new Screen();
 
     public static void start() {
-        while(true) {
-           Client possibleClient = ecran.afiseazaMesajUserNou();
-            boolean isClient = bankDatabase.checkExistingClient(possibleClient);
-            if(!isClient){
-                ecran.afiseazaMesajParametriiIncorecti();
-            }else {
-                ecran.afiseazaOptiuni();
-                dealWithCurrUser(possibleClient, ecran);
+        Client possibleClient = getActualClient();
+        TransactionFactory transactionFactory = new TransactionFactory(possibleClient, bankDatabase, keypad, screen);
+        int input = keypad.getUserInput();
+        Transaction transaction = transactionFactory.getTransaction(input);
+        while (true) {
+            if(transaction != null) {
+                transaction.executeTransaction();
+                screen.showMessage(ATM_StringConstants.SHOW_OPTIONS.toString());
+                transaction = transactionFactory.getTransaction(keypad.getUserInput());
+            } else{
+                start();
             }
         }
     }
 
-    private static void dealWithCurrUser(Client possibleClient, Screen screen){
-        Scanner scan = new Scanner(System.in);
-        boolean exit = false;
-        while(!scan.hasNext()) { }
-        int operation = scan.nextInt();
-        switch (operation){
-            case 1:
-                int amount = bankDatabase.getClientAmount(possibleClient);
-                System.out.println("Balanta curenta este: " + amount);
-                screen.afiseazaOptiuni();
-                dealWithCurrUser(possibleClient, ecran);
-
-            case 2:
-                int depositValue = screen.afiseazaOptiuniDepozit();
-                int currAmount = bankDatabase.getClientAmount(possibleClient);
-                currAmount += depositValue;
-                bankDatabase.updateClientBalance(possibleClient, currAmount);
-                System.out.println("Balanta curenta este: " + currAmount);
-                screen.afiseazaOptiuni();
-                dealWithCurrUser(possibleClient, ecran);
-
-            case 3:
-                int optiune = screen.afiseazaOptiuniRetragere();
-                if(AVAILABLE_AMOUNT < optiune){
-                    System.out.println("ATM-ul nu are sufienti bani!");
-                }
-                int currClientSum = bankDatabase.getClientAmount(possibleClient);
-                currClientSum -= optiune;
-                bankDatabase.updateClientBalance(possibleClient, currClientSum);
-                System.out.println("Balanta curenta este: " + currClientSum);
-                screen.afiseazaOptiuni();
-                dealWithCurrUser(possibleClient, ecran);
-
-            case 4:
-               start();
+    private static Client getActualClient() {
+        screen.showMessage(ATM_StringConstants.HELLO.toString());
+        int accountId = keypad.getUserInput();
+        int pin = keypad.getUserInput();
+        Client possibleClient = new Client(accountId, pin);
+        boolean isClient = bankDatabase.checkExistingClient(possibleClient);
+        if(isClient) {
+            screen.showMessage(ATM_StringConstants.SHOW_OPTIONS.toString());
+            return possibleClient;
+        }else {
+            screen.showMessage(ATM_StringConstants.INVALID_USER.toString());
+            return getActualClient();
         }
     }
 }
