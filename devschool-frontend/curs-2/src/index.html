@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en" ng-app="toDoApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hello AngularJS</title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body ng-controller="ToDoCtrl as vm">
+
+<div class="container">
+    <h1 class="text-center" ng-if="vm.toDo && vm.toDo.user">{{vm.toDo.user}}'s to do list</h1>
+
+    <div class="row input-group">
+        <span class="input-group-addon">Todo</span>
+        <input class="col-sm-3 input-control" type="text" placeholder="Enter a new todo" ng-model="vm.actionText">
+    </div>
+
+    <div class="row">
+        <button class="btn btn-primary" ng-click="vm.add(vm.actionText)">Add to list</button>
+    </div>
+
+    <h3 ng-show="vm.toDo && vm.toDo.todos && vm.toDo.todos.length > 0">Your progress:</h3>
+
+    <div class="row progress" ng-show="vm.toDo && vm.toDo.todos && vm.toDo.todos.length > 0">
+        <div class="progress-bar progress-bar-success" role="progressbar"
+             aria-valuenow="{{(vm.toDo.todos | filter: {done: 'true'}).length / vm.toDo.todos.length * 100}}"
+             aria-valuemin="0"
+             aria-valuemax="100"
+             style="width:{{(vm.toDo.todos | filter: {done: 'true'}).length / vm.toDo.todos.length * 100}}%">
+            <span>Done: {{(vm.toDo.todos | filter: {done: 'true'}).length * 100 / vm.toDo.todos.length}}%</span>
+        </div>
+
+        <div class="progress-bar progress-bar-danger" role="progressbar"
+             aria-valuenow="{{(vm.toDo.todos | filter: {done: 'false'}).length / vm.toDo.todos.length * 100}}"
+             aria-valuemin="0"
+             aria-valuemax="100"
+             style="width:{{(vm.toDo.todos | filter: {done: 'false'}).length / vm.toDo.todos.length * 100}}%">
+            <span>Not done:{{(vm.toDo.todos | filter: {done: 'false'}).length * 100 / vm.toDo.todos.length}}%</span>
+        </div>
+    </div>
+
+    <h3 class="bg-danger">
+        Not done <span class="badge">{{(vm.toDo.todos | filter: {done: 'false'}).length}}</span>
+    </h3>
+
+    <ul class="list-group" ng-if="vm.toDo && vm.toDo.todos">
+        <li class="list-group-item" ng-repeat="todo in vm.toDo.todos | filter: {done: 'false'} | orderBy: 'action'">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" ng-checked="todo.done" ng-model="todo.done">
+                    {{todo.action}}
+                </label>
+            </div>
+        </li>
+    </ul>
+
+    <h3 class="bg-success">
+        Done <span class="badge">{{(vm.toDo.todos | filter: {done: 'true'}).length}}</span>
+    </h3>
+
+    <ul class="list-group" ng-if="vm.toDo && vm.toDo.todos">
+        <li class="list-group-item" ng-repeat="todo in vm.toDo.todos | filter: {done: 'true'}  | orderBy: 'action'">
+            {{todo.action}}
+        </li>
+    </ul>
+
+</div>
+
+<script src="toDo.app.js"></script>
+<script src="toDo.ctrl.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+</body>
+</html>
