@@ -1,0 +1,6 @@
+organization=mandaeduard-github
+projectKey=ro.isr:devschool-3
+serverUrl=https://sonarqube.com
+dashboardUrl=https://sonarqube.com/dashboard/index/ro.isr:devschool-3
+ceTaskId=AVrdQb9-T5oQhszf5Ga7
+ceTaskUrl=https://sonarqube.com/api/ce/task?id=AVrdQb9-T5oQhszf5Ga7
