@@ -18,11 +18,20 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+    <style>
+
+        body {
+            background: #555555 url(bg-tile.png);
+        }
+
+
+
+    </style>
 </head>
 <body ng-controller="ToDoCtrl as vm" class="background">
     <div class="container">
         <div class="jumbotron">
-            <h1 ng-if="vm.todo && vm.todo.user" class="text-center"> {{vm.todo.user}}'s to do list </h1>
+            <h1 ng-if="vm.todo && vm.todo.user" class="text-center"> {{vm.todo.user}} 's <img src="toDoList.png" alt="toDoList" style="width:250px;height:220px;"> </h1>
         </div>
     </div>
 
