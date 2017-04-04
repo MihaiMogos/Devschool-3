@@ -1,0 +1,179 @@
+html, body, h1, h2, h3, h4, ul, ol, li, p, a {
+    padding: 0;
+    border: 0;
+    margin: 0;
+    font: inherit;
+    font-size: 100%;
+}
+
+ul {
+    padding-left: 30px;
+}
+
+li {
+    font-size: 20px;
+    margin-bottom: 5px;
+    color: black;
+}
+
+h1 {
+    font-size: 28px;
+    margin-top: 15px;
+    color: #000000;
+    text-align: center;
+    font-family: Verdana sans-serif;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 26px;
+    border-bottom: 1px solid #cccccc;
+    color: black;
+    font-family: Verdana sans-serif;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+h3 {
+    margin: 10px;
+    font-family: Verdana sans-serif;
+    font-size: 22px;
+}
+
+body {
+    padding: 15px;
+    background: #555555 url(bg-tile.png);
+    font-family: Garamond serif;
+    font-size: 16px;
+}
+
+p {
+    margin-bottom: 10px;
+    color: #444444;
+    line-height: 24px;
+}
+
+ol {
+    padding-left: 20px;
+}
+
+.day-time {
+    color: #444444;
+    text-decoration: underline;
+}
+
+.concert-location {
+    color: #888888;
+    text-decoration: underline;
+}
+
+a {
+    text-decoration: none;
+    color: #ee932a;
+    display: inline;
+}
+
+.nav {
+    padding: 0;
+}
+
+li {
+    line-height: 22px;
+}
+
+.nav li {
+    display: inline;
+    padding-right: 20px;
+
+}
+
+.nav li:last-child {
+    padding-right: 0;
+ }
+
+.content-section {
+    width: 450px;
+    margin: 0 auto;
+    background: #dddddd url(bg-content.png);
+}
+
+.album {
+    border: 1px dashed;
+    top: 10px;
+    buttom: 10px;
+    left: 5px;
+    right: 5px;
+    margin: 5px;
+}
+
+.header {
+    text-align: center;
+    background: #242424 url(bg-header.png)top center no-repeat;
+}
+
+.bands-list {
+    margin: 0;
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.bands-list img {
+    float: left;
+    padding-right: 15px;
+}
+
+.album img {
+    float: right;
+    padding-right: 15px;
+}
+
+.bands-list li {
+    color: #ff2244;
+    border: 1px solid #555555;
+    height: 120px;
+}
+
+.recording-now {
+    width: 440px;
+    height: 200px;
+    border: 1px solid;
+    margin: 4px;
+    background: #ffffff url(prependers-recording.jpg) top left no-repeat;
+}
+
+.recording-now marquee {
+    font-size: 28px;
+    color: #ff2244;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+}
+
+input {
+    display: block;
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+textarea {
+    display: block;
+    margin-bottom: 15px;
+    width: 445px;
+    font-size: 20px;
+}
+
+.submitC {
+    width: 165px;
+    font-size: 15px;
+}
+
+#OnTour {
+    display: inline;
+}
+ #OnTourL {
+     display: inline;
+ }
+

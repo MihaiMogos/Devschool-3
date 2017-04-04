@@ -5,15 +5,11 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-/**
- * Created by Mucefix on 04/04/17.
- */
 @AllArgsConstructor
 @Getter @Setter
 @ToString
 public class Person {
-
     int age;
     String name;
-
 }
+

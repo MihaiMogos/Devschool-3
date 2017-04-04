@@ -11,7 +11,6 @@
 
     <artifactId>curs-2</artifactId>
 
-
     <dependencies>
         <dependency>
             <groupId>org.projectlombok</groupId>

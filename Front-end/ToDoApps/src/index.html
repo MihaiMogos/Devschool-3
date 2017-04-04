@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en" ng-app="toDoApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ToDo App</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <style>
+
+        body {
+            background: #555555 url(bg-tile.png);
+        }
+
+
+
+    </style>
+</head>
+<body ng-controller="ToDoCtrl as vm" class="background">
+    <div class="container">
+        <div class="jumbotron">
+            <h1 ng-if="vm.todo && vm.todo.user" class="text-center"> {{vm.todo.user}} 's <img src="toDoList.png" alt="toDoList" style="width:250px;height:220px;"> </h1>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="container">
+            <h3>Your progress for today :)</h3>
+            <div class="progress">
+                <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"
+                     style="width:{{(vm.todo.todos | filter: todo.done != true).length / vm.todo.todos.length * 100}}%">
+                </div>
+            </div>
+        </div>
+
+
+        <div class="input">
+            <input type="text" ng-model="vm.actionText" class="col-sm-3" >
+            <button ng-click="vm.add(vm.actionText)" type="button" class="btn btn-primary">Add to list</button>
+        </div>
+
+        <h3 class="well well-sm">ToDos</h3>
+        <ul class="list-group">
+            <li ng-repeat="todo in vm.todo.todos | orderBy: 'action' | filter: todo.done == true" class="list-group-item">
+                <input type="checkbox" ng-model="todo.done" value= true />
+                <span>{{todo.action}}</span>
+            </li>
+        </ul>
+
+        <h3 class="well well-sm">Done</h3>
+        <ul>
+            <li ng-repeat="todo in vm.todo.todos | orderBy: 'action' | filter: todo.done != true">
+                <span>{{todo.action}} </span>
+            </li>
+        </ul>
+
+        <div class="alert alert-success" ng-if="(vm.todo.todos | filter: todo.done != true).length == vm.todo.todos.length && vm.todo.todos.length != 0">
+            <strong>Congrats! You're done!</strong>
+        </div>
+
+        <div class="alert alert-warning" ng-if="(vm.todo.todos | filter: todo.done != true).length != vm.todo.todos.length">
+            <strong>You're not done yet</strong>
+        </div>
+
+
+    </div>
+
+    <!--<style>-->
+        <!--.jumbotron {-->
+            <!--background-color: midnightblue; /* Orange */-->
+            <!--color: #ffffff;-->
+        <!--}-->
+        <!--.background {-->
+            <!--background-color: darkslateblue; /* Orange */-->
+            <!--color: #ffffff;-->
+        <!--}-->
+        <!--.input {-->
+            <!--color: black;-->
+        <!--}-->
+    <!--</style>-->
+
+    <script src="toDo.app.js"></script>
+    <script src="toDo.ctrl.js"></script>
+</body>
+</html>
