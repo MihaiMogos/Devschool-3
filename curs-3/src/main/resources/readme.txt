@@ -1,46 +1,52 @@
 - Java 8
     - lambdas
     - streams
-==============================
+=======================
 Lambdas
-    - You spend more time reading code, than writing code
     - Lambda expressions - easier way to write anonymous classes
     - Lambda - functional interface - interface with only one abstract method - @FunctionalInterface
     - Type of a lambda - functional interface
-    - Creating a new object IS NOT FREE: get memory, clean the memory, execute static initializer,
-        execute static blocks, non static initializers, non static blocks,...
+    - Creating a new object is NOT FREE: get memory, clean the memory, execute static initializer, execute static blocks, non-static initializer, non-static blocks, ...
     - With lambdas - you do not create an object, you do not call new
-    - java.util.function - rich set of functional interfaces - 43
+    - java.util.function - rich set of functional interfaces (~43)
     - 4 categories of functional interfaces:
         - Supplier
             - does not take any parameter and provides a new object
         - Consumer
             - expects an object and does not return anything
-            - Consumer<T> consumer = p -> System.out.println(p);
-            - BiConsumer - takes two object
+            - BiConsumer - takes two parameters
         - Predicate
-            - take a parameter and returns a boolean
-            - BiPredicate
+            - takes a parameter and returns a boolean
+            - BiPredicate - takes two parameters
         - Function
-            - takes an object as a parameter and returns another object
+            - takes an object as parameter and returns another object
             - BiFunction as well
             - UnaryOperator - takes an object and returns an object of the same type
             - BinaryOperator - takes two objects of the same type and returns an object of the same type
-=========================================================================================
-- Collectors and Stream API
+========================
+Collectors and Stream API
     - Stream<Person> personStream = persons.stream();
-    - typed interface; Stream is NOT A COLLECTION; provides a way to process large amounts of data
-    - Streams do not contain any data
+    - Stream = typed interface
+    - Stream != Collection
+    - provides a way to process large amounts of data
+    - streams do not contain any data
     - operations that can be applied:
         - intermediary
         - final - may be called only once
-    - Operations that can be applied on streams map / filter / reduce
-        - map -> uses Function; takes a List<Persons> and returns a List<Integer>
-              -> THE SIZE OF BOTH LISTS IS THE SAME;
-              -> changes the type
-        - filter -> uses a Predicate; take a List<Integer> and return a List<Integer>
-                 -> does not change the type, but changes the size
+    - map / filter / reduce:
+        - map
+            - uses Function
+            - takes a list of A and returns a list of B
+            - the size of both lists is the same
+            - changes the type
+        - filter
+            - uses Predicate
+            - takes a list of A and returns a list of A
+            - does not change the type
+            - but it changes the size of the list
         - reduce
-              -> final operation; equivalent to an SQL aggregation
-              -> basic: SQL operation - min, max, sum, average
-              -> Collectors - to a map, list, string
+            - final operation
+            - equivalent to an SQL aggregation
+            - they are of two types:
+                - basic: SQL operation - min, max, sum, average
+                - collectors:

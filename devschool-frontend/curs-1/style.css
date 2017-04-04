@@ -1,0 +1,48 @@
+body {
+    background-color: #5c5c5c;
+    color: #ffffff;
+}
+
+header {
+    border-bottom: 1px solid #dddddd;
+}
+
+span {
+    color: rgb(0, 255, 0);
+}
+
+footer {
+    border-top: 1px dashed #dddddd;
+    padding: 15px 0;
+}
+
+footer span {
+    color: coral;
+}
+
+.my-class {
+    color: aqua;
+}
+
+#my-id {
+    font-size: 28px;
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 767px) {
+    #my-id {
+        font-size: 10vw;
+    }
+}
+
+a[target="_blank"],
+a[target="_blank"]:visited,
+a[target="_blank"]:focus {
+    text-decoration: none;
+    color: #ff0000;
+}

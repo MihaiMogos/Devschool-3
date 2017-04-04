@@ -7,12 +7,10 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
- * Created by Mucefix on 04/04/17.
+ * Created by scipianus on 04-Apr-17.
  */
 public class StreamsExample {
-
     public static void main(String[] args) {
-        //the average of the age of the people older than 20
         List<Person> persons = Arrays.asList(
                 new Person(25, "Alex"),
                 new Person(18, "Catalin"),
@@ -23,27 +21,31 @@ public class StreamsExample {
                 new Person(35, "Ionut")
         );
 
+        // the average age of the people older than 20
+
+        // the old way
         int sumOfAge = 0;
         int numberOfPersons = 0;
-        for( Person person: persons ){
-            if( person.getAge() > 20 ){
-                numberOfPersons++;
+        for (Person person : persons) {
+            if (person.getAge() > 20) {
                 sumOfAge += person.getAge();
+                numberOfPersons++;
             }
         }
+        double averageAge = (double) sumOfAge / numberOfPersons;
+        System.out.println("Media varstei este: " + averageAge);
 
-        double averageAge= (double)sumOfAge/numberOfPersons;
-        System.out.println("Media varstei este: "+ averageAge);
-
+        // using streams
         Stream<Person> personStream = persons.stream();
-        OptionalDouble averageOptional =  personStream.mapToInt(person -> person.getAge()).filter(age -> age > 20).average();
-        if( averageOptional.isPresent() ){
-            System.out.println("Media varstei cu streams: "+ averageOptional.getAsDouble());
+        OptionalDouble averageAgeOptional = personStream.mapToInt(person -> person.getAge()).filter(age -> age > 20).average();
+        if (averageAgeOptional.isPresent()) {
+            System.out.println("Media varstei este: " + averageAgeOptional.getAsDouble());
         }
 
-        //persoanele peste 20 de ani
-        List<Person> personsAbove20 =  persons.stream().filter(p -> p.getAge() > 20).collect(Collectors.toList());
-        personsAbove20.forEach(System.out::println);
-
+        // persons over 20 years
+        personStream = persons.stream();
+        List<Person> personsOver20 = personStream.filter(person -> person.getAge() > 20).collect(Collectors.toList());
+        System.out.println("Persons over 20 years:");
+        personsOver20.forEach(person -> System.out.println(person));
     }
 }

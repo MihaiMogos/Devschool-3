@@ -6,10 +6,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * Created by Mucefix on 04/04/17.
+ * Created by scipianus on 04-Apr-17.
  */
 public class StreamsExercise2 {
-
     public static void main(String[] args) {
         List<Person> persons = Arrays.asList(
                 new Person(25, "Alex"),
@@ -21,15 +20,16 @@ public class StreamsExercise2 {
                 new Person(35, "Ionut")
         );
 
-        //get the oldest person from the collection
-        Person oldestPerson = persons.stream().max( Comparator.comparing( e -> e.getAge() ) ).get();
-        System.out.println("Oldest Person: "+ oldestPerson);
+        // get the oldest person from the collection
+        System.out.println("Oldest person:");
+        System.out.println(persons.stream().max(Comparator.comparing(person -> person.getAge())).get());
+        System.out.println();
 
-
+        // get all the oldest persons from the collection
+        System.out.println("List of oldest persons:");
         List<Person> oldestPersons = persons.stream()
-                        .filter( p -> p.getAge() == persons.stream().map(a -> a.getAge()).max(Comparator.naturalOrder()).get() )
-                        .collect(Collectors.toList());
+                .filter(person -> person.getAge() == persons.stream().mapToInt(p -> p.getAge()).max().getAsInt())
+                .collect(Collectors.toList());
         oldestPersons.forEach(System.out::println);
-
     }
 }

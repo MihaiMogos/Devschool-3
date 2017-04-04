@@ -1,0 +1,18 @@
+[
+  {
+    "action": "Make slides",
+    "done": false
+  },
+  {
+    "action": "Travel to ING",
+    "done": false
+  },
+  {
+    "action": "Prepare room",
+    "done": false
+  },
+  {
+    "action": "Order pizza",
+    "done": false
+  }
+]
