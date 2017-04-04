@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html ng-app="sportsStore">
+<head>
+    <title>SportsStore</title>
+
+    <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="bower_components/bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet" />
+</head>
+<body ng-controller="sportsStoreCtrl as vm">
+    <div class="navbar navbar-inverse">
+        <a class="navbar-brand" href="#">SPORTS STORE</a>
+    </div>
+
+    <div class="panel panel-default row" ng-controller="productListCtrl as pv">
+        <div class="col-xs-3">
+            <a ng-click="pv.selectCategory()"
+               class="btn btn-block btn-default btn-lg" ng-class="pv.getCategoryClass()">Home</a>
+            <a ng-repeat="item in vm.data.products | orderBy:'category' | unique:'category'"
+               ng-click="pv.selectCategory(item)" class=" btn btn-block btn-default btn-lg " ng-class="pv.getCategoryClass(item)">
+                {{item}}
+            </a>
+        </div>
+        <div class="col-xs-8">
+            <!--pv.categoryFilter(item) nu merge-->
+            <div class="well" ng-repeat="item in vm.data.products | filter: pv.categoryFilter | range: pv.selectedPage : pv.pageSize">
+                <h3>
+                    <strong>{{item.name}}</strong>
+                    <span class="pull-right label label-primary">
+                        {{item.price | currency}}
+                    </span>
+                </h3>
+                <span class="lead">{{item.description}}</span>
+            </div>
+            <div class="pull-right btn-group">
+                <a ng-repeat="page in vm.data.products | filter:pv.categoryFilter | pageCount:pv.pageSize"
+                   ng-click="pv.selectPage($index + 1)" class="btn btn-default"
+                   ng-class="pv.getPageClass($index + 1)">
+                    {{$index + 1}}
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="src/customFilters.js"></script>
+    <script src="src/stortsStore.js"></script>
+    <script src="src/productListCtrl.js"></script>
+    <script src="src/sportsStoreCtrl.js"></script>
+</body>
+</html>
