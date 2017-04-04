@@ -10,6 +10,7 @@
     <modules>
         <module>curs1</module>
         <module>curs-2</module>
+        <module>curs-3</module>
     </modules>
     <packaging>pom</packaging>
 

@@ -1,0 +1,44 @@
+- Java 8
+    - lambdas
+    - streams
+===============
+Lambdas
+    - Lambda expressions - easier way to write anonymous classes
+    - Lambda - functional interface - interface with only one abstract method - @FunctionalInterface
+    - Type of a lambda - functional interface
+    - Creating a new object IS NOT FREE: get memory, clean the memory, execute static initializer,
+        execute static blocks, non static initializer, non static blocks, ...
+    - With lambdas - you do not create an object, you do not call new
+    - java.util.function - rich set of functional interfaces - 43
+    - 4 categories of functional interfaces:
+        - Supplier
+            - does not take any parameter and provides a new object
+        - Consumer
+            - expects an object and does not return anything
+            - Consumer<T> consumer = p -> System.out.println(p);
+            - BiConsumer - takes two objects
+        - Predicate
+            - takes a parameter and returns a boolean
+            - BiPredicate
+        - Function
+            - takes an object as parameter and returns another object
+            - BiFunction as well
+            - UnaryOperator - takes an object and returns an object of the same type
+            - Binary - takes two objects and returns an object of the same type
+========================================================================================================
+- Collectors and Stream API
+    - Stream<Person> personStream = persons.stream();
+    - typed interface; Stream is NOT A COLLECTION; provides a way to process large amounts of data
+    - Streams do not contain any data
+    - operation that can be applied:
+        - intermediary
+        - final - may be called only once
+    - Operations that can be applied on stream map / filter / reduce
+        - map -> uses Function; takes a List<Person> and returns a List<Integer>
+              -> THE SIZE OF BOTH LISTS IS THE SAME;
+              -> changes the type
+        - filter -> uses a Predicate; takes a List<Integer> and return a List<Integer>
+                 -> does not change the type, but changes the size
+        - reduce -> final operation; equivalent to an SQL aggregation
+                 -> basic: SQL operation - min, max, sum, average
+                 -> Collectors - to a map, list, string

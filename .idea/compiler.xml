@@ -8,11 +8,13 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="curs-2" />
+        <module name="curs-3" />
         <module name="curs1" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="curs-2" target="1.8" />
+      <module name="curs-3" target="1.8" />
       <module name="curs1" target="1.8" />
       <module name="devschool3" target="1.8" />
     </bytecodeTargetLevel>
