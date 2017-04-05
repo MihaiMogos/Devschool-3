@@ -15,7 +15,8 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "angularjs#^1.6.4",
-    "bootstrap": "^3.3.7"
-  }
+    "angular-route": "^1.6.4",
+    "angularfire": "^2.3.0"
+  },
+  "private": true
 }

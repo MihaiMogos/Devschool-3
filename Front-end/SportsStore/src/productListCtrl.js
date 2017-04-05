@@ -1,6 +1,6 @@
 (function (module) {
 
-    var productListCtrl = function ($filter) {
+    var productListCtrl = function (cart) {
         var vm = this;
 
         vm.selectedCategory = null;
@@ -28,6 +28,10 @@
 
         vm.getCategoryClass = function (category) {
             return vm.selectedCategory == category ? "btn-primary" : "";
+        };
+
+        vm.addProductToCart = function (product) {
+            cart.addProduct(product.id, product.name, product.price);
         };
     };
 
