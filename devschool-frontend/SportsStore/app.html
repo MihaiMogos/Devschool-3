@@ -4,46 +4,47 @@
     <title>Sports Store</title>
     <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet"/>
     <link href="bower_components/bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet"/>
+    <base href="/app.html">
 </head>
 <body ng-controller="sportsStoreCtrl as vm">
+
 <div class="navbar navbar-inverse">
-    <a class="navbar-brand" href="#">SPORTS STORE</a>
-</div>
-<div class="panel panel-default row" ng-controller="productListCtrl as pvm">
-    <div class="col-xs-3">
-        <a ng-click="pvm.selectCategory()"
-           class="btn btn-block btn-default btn-lg" ng-class="pvm.getCategoryClass()">Home</a>
-        <a ng-repeat="item in vm.data.products | orderBy:'category' | unique:'category'"
-           ng-click="pvm.selectCategory(item)" class=" btn btn-block btn-default btn-lg"
-           ng-class="pvm.getCategoryClass(item)">
-            {{item}}
-        </a>
-    </div>
-    <div class="col-xs-8">
-        <div class="well"
-             ng-repeat="item in vm.data.products | filter: pvm.categoryFilterFn | range: pvm.selectedPage:pvm.pageSize">
-            <h3>
-                <strong>{{item.name}}</strong>
-                <span class="pull-right label label-primary">
-                    {{item.price | currency}}
-                </span>
-            </h3>
-            <span class="lead">{{item.description}}</span>
-        </div>
-        <div class="pull-right btn-group">
-            <a ng-repeat="page in vm.data.products | filter:pvm.categoryFilterFn | pageCount:pvm.pageSize"
-               ng-click="pvm.selectPage($index + 1)" class="btn btn-default"
-               ng-class="pvm.getPageClass($index + 1)">
-                {{$index + 1}}
-            </a>
-        </div>
-    </div>
+    <a class="navbar-brand" href="/">SPORTS STORE</a>
+    <cart-summary></cart-summary>
 </div>
 
+<div class="alert alert-danger" ng-show="vm.data.error">
+    Error ({{vm.data.error.status}}). The product data was not loaded.
+    <a href="/" class="alert-link">Click here to try again</a>
+</div>
+
+<ng-view></ng-view>
+
+<script src="node_modules/firebase/firebase.js"></script>
+<script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyAbyyW43nxKpE2UT4w9xphtwO8iJrIjXRc",
+        authDomain: "sportsstore-eb360.firebaseapp.com",
+        databaseURL: "https://sportsstore-eb360.firebaseio.com",
+        projectId: "sportsstore-eb360",
+        storageBucket: "sportsstore-eb360.appspot.com",
+        messagingSenderId: "1025286140983"
+    };
+    firebase.initializeApp(config);
+</script>
 <script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angularfire/dist/angularfire.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
 <script src="src/customFilters.js"></script>
 <script src="src/sportsStore.js"></script>
+<script src="src/sportsStoreConfig.js"></script>
 <script src="src/sportsStoreCtrl.js"></script>
 <script src="src/productListCtrl.js"></script>
+<script src="src/cart.js"></script>
+<script src="src/cartFactory.js"></script>
+<script src="src/cartSummary.js"></script>
+<script src="src/checkoutSummaryCtrl.js"></script>
+
 </body>
 </html>

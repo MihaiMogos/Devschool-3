@@ -11,6 +11,7 @@
         <module>curs-1</module>
         <module>curs-2</module>
         <module>curs-3</module>
+        <module>curs-4</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -24,7 +25,7 @@
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
-                <version>1.16.10</version>
+                <version>1.16.16</version>
                 <scope>provided</scope>
             </dependency>
         </dependencies>

@@ -1,6 +1,6 @@
 (function (module) {
 
-    var productListCtrl = function () {
+    var productListCtrl = function (cart) {
         var vm = this;
         vm.selectedCategory = undefined;
         vm.selectedPage = 1;
@@ -25,6 +25,10 @@
 
         vm.getPageClass = function (page) {
             return vm.selectedPage === page ? "btn-primary" : "";
+        };
+
+        vm.addProductToCart = function (product) {
+            cart.addProduct(product.id, product.name, product.price);
         }
     };
 
