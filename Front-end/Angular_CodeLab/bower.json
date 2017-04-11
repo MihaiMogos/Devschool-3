@@ -1,0 +1,29 @@
+{
+  "name": "code",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Lavinia Tache <lavinia.tachee@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/tachelavinia/Devschool-3",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-css": "^3.3.7",
+    "angular": "^1.6.4"
+  },
+  "overrides": {
+    "bootstrap-css": {
+      "main": [
+        "css/bootstrap.css",
+        "css/bootstrap-theme.css"
+      ]
+    }
+  }
+}
