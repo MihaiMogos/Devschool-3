@@ -91,3 +91,27 @@ distribute responsibility.
     A request is wrapped under an object as command and passed to invoker object. Invoker object
     looks for the appropriate object which can handle this command and passes the command to the
     corresponding object which executes the command.
+    - iterator - very commonly used design pattern in Java and .Net programming environment. This
+    pattern is used to get a way to access the elements of a collection object in sequential manner
+    without any need to know its underlying representation.
+    - observer - used when there is one-to-many relationship between objects such as if one object is
+    modified, its depenedent objects are to be notified automatically
+    - strategy - a class behavior or its algorithm can be changed at runtime. In Strategy pattern,
+    we create objects which represent various strategies and a context object whose behavior varies as
+    per its strategy object. The strategy object changes the executing algorithm of the context object
+    - template - an abstract class exposes defined ways/templates to execute its methods. Its subclasses
+    can override the method implementation as per need but the invocation is to be in the same way as
+    defined by an abstract class.
+
+- Structural patterns let you compose classes or objects into larger structures.
+    - adapter - Adapter pattern works as a bridge between two incompatible interfaces. This pattern
+    involves a single class which is responsible to join functionalities of independent or incompatible
+    interfaces. A real life example could be a case of card reader which acts as an adapter between
+    memory card and a laptop. You plugin the memory card into card reader and card reader into the
+    laptop so that memory card can be read via laptop. We are demonstrating use of Adapter pattern
+    via following example in which an audio player device can play mp3 files only and wants to use
+    an advanced audio player capable of playing vlc and mp4 files.
+    - decorator - allows a user to add new functionality to an existing object without altering its
+    structure. This type of design pattern comes under structural pattern as this pattern acts as a
+    wrapper to existing class. This pattern creates a decorator class which wraps the original class
+    and provides additional functionality keeping class methods signature intact.
