@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html ng-app="sportsStore">
+<head>
+    <title>SportsStore</title>
+    <base href="/app.html">
+    <!-- bower:css -->
+    <link rel="stylesheet" href="vendor/bootstrap-css/css/bootstrap.css" />
+    <link rel="stylesheet" href="vendor/bootstrap-css/css/bootstrap-theme.css" />
+    <!-- endbower -->
+
+    <!-- inject:css -->
+    <!-- endinject -->
+</head>
+<body ng-controller="sportsStoreCtrl as vm">
+<div class="navbar navbar-inverse">
+    <a class="navbar-brand" href="/">SPORTS STORE</a>
+    <cart-summary></cart-summary>
+</div>
+
+<div class="alert alert-danger" ng-show="vm.data.error">
+    Error ({{vm.data.error.status}}). The product data was not loaded.
+    <a href="/" class="alert-link">Click here to try again</a>
+</div>
+
+<ng-view></ng-view>
+<!-- bower:js -->
+<script src="vendor/angular/angular.js"></script>
+<script src="vendor/angular-route/angular-route.js"></script>
+<script src="vendor/firebase/firebase.js"></script>
+<script src="vendor/angularfire/dist/angularfire.js"></script>
+<!-- endbower -->
+
+<!-- inject:js -->
+<script src="client/app/stortsStore.js"></script>
+<script src="client/app/sportsStoreCtrl.js"></script>
+<script src="client/app/sportsStoreConfig.js"></script>
+<script src="client/app/productListCtrl.js"></script>
+<script src="client/app/customFilters.js"></script>
+<script src="client/app/cart.js"></script>
+<script src="client/app/checkoutSummaryCtrl.js"></script>
+<script src="client/app/cartSummary.js"></script>
+<script src="client/app/cartFactory.js"></script>
+<!-- endinject -->
+<script>
+    var config = {
+        apiKey: "AIzaSyBOzSTAsoiPwO2DrwavnYIW9Nn1-C_C5qg",
+        authDomain: "sportsstore-230a1.firebaseapp.com",
+        databaseURL: "https://sportsstore-230a1.firebaseio.com",
+        projectId: "sportsstore-230a1",
+        storageBucket: "sportsstore-230a1.appspot.com",
+        messagingSenderId: "267926456160"
+    };
+
+    firebase.initializeApp(config);
+</script>
+</body>
+</html>

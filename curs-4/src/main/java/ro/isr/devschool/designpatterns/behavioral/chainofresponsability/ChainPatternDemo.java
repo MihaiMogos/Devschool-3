@@ -20,5 +20,4 @@ public class ChainPatternDemo {
         //loggerChain.logMessage(AbstractLogger.DEBUG, "This is a DEBUG info");
         loggerChain.logMessage(AbstractLogger.ERROR, "This is ann ERROR !!!");
     }
-
 }

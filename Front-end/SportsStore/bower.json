@@ -16,7 +16,16 @@
   ],
   "dependencies": {
     "angular-route": "^1.6.4",
-    "angularfire": "^2.3.0"
+    "angularfire": "^2.3.0",
+    "bootstrap-css": "^3.3.7"
+  },
+  "overrides": {
+    "bootstrap-css": {
+      "main": [
+        "css/bootstrap.css",
+        "css/bootstrap-theme.css"
+      ]
+    }
   },
   "private": true
 }

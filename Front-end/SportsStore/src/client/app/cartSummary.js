@@ -3,7 +3,7 @@
     var cartSummary = function (cart) {
         return {
             restrict: "E",
-            templateUrl: "src/views/cartSummary.html",
+            templateUrl: "client/views/cartSummary.html",
             controller: function () {
                 var vm = this;
 

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html ng-app="sportStoreAdminApp">
+<head>
+    <title>Administration</title>
+    <base href="/admin.html">
+    <!-- bower:css -->
+    <link rel="stylesheet" href="vendor/bootstrap-css/css/bootstrap.css" />
+    <link rel="stylesheet" href="vendor/bootstrap-css/css/bootstrap-theme.css" />
+    <!-- endbower -->
+
+    <!-- inject:css -->
+    <!-- endinject -->
+
+
+</head>
+<body>
+<ng-view></ng-view>
+<!-- bower:js -->
+<script src="vendor/angular/angular.js"></script>
+<script src="vendor/angular-route/angular-route.js"></script>
+<script src="vendor/firebase/firebase.js"></script>
+<script src="vendor/angularfire/dist/angularfire.js"></script>
+<!-- endbower -->
+
+<!-- inject:js -->
+<script src="admin/app/SportsStoreAdminApp.js"></script>
+<script src="admin/app/SportStoreAdminConfig.js"></script>
+<script src="admin/app/productCtrl.js"></script>
+<script src="admin/app/OrdersCtrl.js"></script>
+<script src="admin/app/mainCtrl.js"></script>
+<script src="admin/app/AuthenticationCtrl.js"></script>
+<!-- endinject -->
+
+<script>
+    var config = {
+        apiKey: "AIzaSyBOzSTAsoiPwO2DrwavnYIW9Nn1-C_C5qg",
+        authDomain: "sportsstore-230a1.firebaseapp.com",
+        databaseURL: "https://sportsstore-230a1.firebaseio.com",
+        projectId: "sportsstore-230a1",
+        storageBucket: "sportsstore-230a1.appspot.com",
+        messagingSenderId: "267926456160"
+    };
+    firebase.initializeApp(config);
+</script>
+
+</body>
+</html>

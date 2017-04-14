@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "sportsstore-2955d"
+    "default": "sportsstore-230a1",
+    "staging": "sportsstore-230a1"
   }
 }
