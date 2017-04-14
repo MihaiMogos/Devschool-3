@@ -1,0 +1,29 @@
+{
+  "name": "curs-5",
+  "description": "",
+  "main": "index.html",
+  "authors": [
+    "scipianus"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/scipianus/Devschool-3",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.3",
+    "bootstrap-css": "^3.3.7"
+  },
+  "overrides": {
+    "bootstrap-css": {
+      "main": [
+        "css/bootstrap.css",
+        "css/bootstrap-theme.css"
+      ]
+    }
+  }
+}

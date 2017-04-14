@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en" ng-app="toDoApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ToDo App</title>
+    <!-- build:css css/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="vendor/bootstrap-css/css/bootstrap.css" />
+    <link rel="stylesheet" href="vendor/bootstrap-css/css/bootstrap-theme.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:css css/app.css -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="app.css">
+    <!-- endinject -->
+    <!-- endbuild -->
+</head>
+<body ng-controller="ToDoCtrl as vm">
+
+<div class="page-header">
+    <h1>
+        {{vm.todo.user}}'s To Do List
+        <span class="label label-default" ng-hide="vm.incompleteCount() === 0" ng-class="vm.warningLevel()">
+            {{vm.incompleteCount()}}
+        </span>
+    </h1>
+</div>
+
+<div class="panel">
+    <div class="input-control">
+        <input type="text" ng-model="actionText" class="form-control">
+        <span class="input-group-btn">
+            <button class="btn btn-default" ng-click="vm.addNewItem(actionText)">Add</button>
+        </span>
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Description</th>
+            <th>Done</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="item in vm.todo.items | checkedItems: showComplete | orderBy: 'action' track by $index">
+            <td>{{item.action}}</td>
+            <td><input type="checkbox" ng-model="item.done"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="checkbox-inline">
+        <label>
+            <input type="checkbox" ng-model="showComplete">
+            Show Complete
+        </label>
+    </div>
+</div>
+
+<!-- build:js js/vendor.js -->
+<!-- bower:js -->
+<script src="vendor/angular/angular.js"></script>
+<!-- endbower -->
+<!-- endbuild -->
+
+<!-- build:js js/app.js -->
+<!-- inject:js -->
+<script src="app/app.module.js"></script>
+<script src="app/app.service.js"></script>
+<script src="app/app.filter.js"></script>
+<script src="app/app.controller.js"></script>
+<!-- endinject -->
+<!-- endbuild -->
+</body>
+</html>

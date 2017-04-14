@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html ng-app="sportsStore">
+<head>
+    <title>Sports Store</title>
+    <base href="/app.html">
+    <!-- build:css css/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="vendor/bootstrap-css/css/bootstrap.css" />
+    <link rel="stylesheet" href="vendor/bootstrap-css/css/bootstrap-theme.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:css css/app.css -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- endbuild -->
+</head>
+<body ng-controller="sportsStoreCtrl as vm">
+
+<div class="navbar navbar-inverse">
+    <a class="navbar-brand" href="/">SPORTS STORE</a>
+    <cart-summary></cart-summary>
+</div>
+
+<div class="alert alert-danger" ng-show="vm.data.error">
+    Error ({{vm.data.error.status}}). The product data was not loaded.
+    <a href="/" class="alert-link">Click here to try again</a>
+</div>
+
+<ng-view></ng-view>
+
+<!-- build:js js/vendor.js -->
+<!-- bower:js -->
+<script src="vendor/angular/angular.js"></script>
+<script src="vendor/angular-route/angular-route.js"></script>
+<script src="vendor/firebase/firebase.js"></script>
+<script src="vendor/angularfire/dist/angularfire.js"></script>
+<!-- endbower -->
+<!-- endbuild -->
+
+<!-- build:js js/app.js -->
+<!-- inject:js -->
+<script src="app/sportsStore.js"></script>
+<script src="app/sportsStoreCtrl.js"></script>
+<script src="app/sportsStoreConfig.js"></script>
+<script src="app/productListCtrl.js"></script>
+<script src="app/customFilters.js"></script>
+<script src="app/cart.js"></script>
+<script src="app/checkoutSummaryCtrl.js"></script>
+<script src="app/cartSummary.js"></script>
+<script src="app/cartFactory.js"></script>
+<!-- endinject -->
+<!-- endbuild -->
+
+<script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyAbyyW43nxKpE2UT4w9xphtwO8iJrIjXRc",
+        authDomain: "sportsstore-eb360.firebaseapp.com",
+        databaseURL: "https://sportsstore-eb360.firebaseio.com",
+        projectId: "sportsstore-eb360",
+        storageBucket: "sportsstore-eb360.appspot.com",
+        messagingSenderId: "1025286140983"
+    };
+    firebase.initializeApp(config);
+</script>
+</body>
+</html>

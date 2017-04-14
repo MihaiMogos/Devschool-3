@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html ng-app="sportsStoreAdmin">
+<head>
+    <title>Administration</title>
+    <base href="/admin.html">
+    <!-- build:css css/adminVendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="vendor/bootstrap-css/css/bootstrap.css" />
+    <link rel="stylesheet" href="vendor/bootstrap-css/css/bootstrap-theme.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:css css/adminApp.css -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- endbuild -->
+</head>
+<body>
+
+<ng-view></ng-view>
+
+<!-- build:js js/adminVendor.js -->
+<!-- bower:js -->
+<script src="vendor/angular/angular.js"></script>
+<script src="vendor/angular-route/angular-route.js"></script>
+<script src="vendor/firebase/firebase.js"></script>
+<script src="vendor/angularfire/dist/angularfire.js"></script>
+<!-- endbower -->
+<!-- endbuild -->
+
+<!-- build:js js/adminApp.js -->
+<!-- inject:js -->
+<script src="admin/sportsStoreAdmin.js"></script>
+<script src="admin/sportsStoreAdminConfig.js"></script>
+<script src="admin/productCtrl.js"></script>
+<script src="admin/ordersCtrl.js"></script>
+<script src="admin/mainCtrl.js"></script>
+<script src="admin/authCtrl.js"></script>
+<!-- endinject -->
+<!-- endbuild -->
+
+<script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyAbyyW43nxKpE2UT4w9xphtwO8iJrIjXRc",
+        authDomain: "sportsstore-eb360.firebaseapp.com",
+        databaseURL: "https://sportsstore-eb360.firebaseio.com",
+        projectId: "sportsstore-eb360",
+        storageBucket: "sportsstore-eb360.appspot.com",
+        messagingSenderId: "1025286140983"
+    };
+    firebase.initializeApp(config);
+</script>
+</body>
+</html>
