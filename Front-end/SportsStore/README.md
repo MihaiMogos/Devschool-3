@@ -1,2 +1,2 @@
 # Sports Store
-sportsstore-230a1.firebaseapp.com
+[Firebase URL] (https://sportsstore-230a1.firebaseapp.com)
