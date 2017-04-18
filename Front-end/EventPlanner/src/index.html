@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html ng-app="eventApp">
+<head>
+    <title>Event Planner</title>
+    <base href="/index.html">
+    <!-- bower:css -->
+    <link rel="stylesheet" href="vendor/bootstrap-css/css/bootstrap.css" />
+    <link rel="stylesheet" href="vendor/bootstrap-css/css/bootstrap-theme.css" />
+    <link rel="stylesheet" href="vendor/bootstrap-social/bootstrap-social.css" />
+    <link rel="stylesheet" href="vendor/components-font-awesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="vendor/angular-material/angular-material.css" />
+    <!-- endbower -->
+    <link rel="stylesheet" href="vendor/clockpicker/dist/bootstrap-clockpicker.css"/>
+    <link rel="stylesheet" href="vendor/clockpicker/dist/jquery-clockpicker.css"/>
+    <!-- inject:css -->
+    <link rel="stylesheet" href="stylesheet.css">
+    <!-- endinject -->
+</head>
+<body ng-controller="AuthenticationCtrl as vm">
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">Event Planner </a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a href="/app">Events</a></li>
+            <li><a href="/userEvents">Your calendar</a></li>
+            <li><a href="/newEvent">Add event</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <button ng-show="vm.isOnline" ng-click="vm.logOut()" class="btn btn-link navbar-btn" href="/"><span
+                        class="glyphicon glyphicon-user"></span> Log Out
+                </button>
+            </li>
+            <li>
+                <button ng-hide="vm.isOnline" class="btn btn-link navbar-btn" ng-click="vm.goToLogin()">
+                    <span class="glyphicon glyphicon-log-in">                    </span> Login
+                </button>
+                <span class="navbar-text"
+                      ng-show="vm.isOnline"> Hello, {{vm.user.displayName}}
+                </span>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<ng-view></ng-view>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAfOn_soz9zZAQCeCKa-EywsdaBc86rvFM&callback=initMap">
+</script>
+
+<!-- bower:js -->
+<script src="vendor/angular/angular.js"></script>
+<script src="vendor/firebase/firebase.js"></script>
+<script src="vendor/angularfire/dist/angularfire.js"></script>
+<script src="vendor/jquery/dist/jquery.js"></script>
+<script src="vendor/bootstrap/dist/js/bootstrap.js"></script>
+<script src="vendor/angular-route/angular-route.js"></script>
+<script src="vendor/angular-animate/angular-animate.js"></script>
+<script src="vendor/angular-aria/angular-aria.js"></script>
+<script src="vendor/angular-messages/angular-messages.js"></script>
+<script src="vendor/angular-material/angular-material.js"></script>
+<script src="vendor/angularjs-datetime-picker/angularjs-datetime-picker.js"></script>
+<script src="vendor/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="vendor/angular-simple-logger/dist/angular-simple-logger.js"></script>
+<script src="vendor/lodash/lodash.js"></script>
+<script src="vendor/markerclustererplus/src/markerclusterer.js"></script>
+<script src="vendor/google-maps-utility-library-v3-markerwithlabel/dist/markerwithlabel.js"></script>
+<script src="vendor/google-maps-utility-library-v3-infobox/dist/infobox.js"></script>
+<script src="vendor/google-maps-utility-library-v3-keydragzoom/dist/keydragzoom.js"></script>
+<script src="vendor/js-rich-marker/src/richmarker.js"></script>
+<script src="vendor/angular-google-maps/dist/angular-google-maps.js"></script>
+<script src="vendor/ngmap/build/scripts/ng-map.js"></script>
+<!-- endbower -->
+<script src="vendor/clockpicker/dist/bootstrap-clockpicker.js"></script>
+<script src="vendor/clockpicker/dist/jquery-clockpicker.js"></script>
+<!-- inject:js -->
+<script src="app/EventPlannerApp.js"></script>
+<script src="app/EventsCtrl.js"></script>
+<script src="app/EventPlannerConfig.js"></script>
+<script src="app/CalendarApp.js"></script>
+<script src="app/CalendarCtrl.js"></script>
+<script src="app/AutenthicationCtrl.js"></script>
+<!-- endinject -->
+<script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyDW8FLMZE8vhrJfIzKwfTZrbo_GK7NEoqU",
+        authDomain: "eventplanner-50e69.firebaseapp.com",
+        databaseURL: "https://eventplanner-50e69.firebaseio.com",
+        projectId: "eventplanner-50e69",
+        storageBucket: "eventplanner-50e69.appspot.com",
+        messagingSenderId: "300197240220"
+    };
+    firebase.initializeApp(config);
+</script>
+</body>
+</html>
+

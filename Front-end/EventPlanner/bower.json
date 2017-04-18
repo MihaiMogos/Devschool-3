@@ -1,0 +1,45 @@
+{
+  "name": "planner",
+  "description": "",
+  "main": "index.html",
+  "authors": [
+    "Lavinia Tache <lavinia.tachee@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/tachelavinia/Devschool-3",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "src/vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.4",
+    "bootstrap-css": "^3.3.7",
+    "firebase": "^3.7.7",
+    "angularfire": "^2.3.0",
+    "bootstrap-social": "^5.1.1",
+    "angular-route": "^1.6.4",
+    "font-awesome": "^4.7.0",
+    "components-font-awesome": "^4.7.0",
+    "angular-material": "^1.1.3",
+    "angular-messages": "^1.6.4",
+    "angularjs-datetime-picker": "^0.1.20",
+    "angular-bootstrap": "^2.5.0",
+    "angular-google-maps": "^2.4.1",
+    "ngmap": "^1.18.4"
+  },
+  "overrides": {
+    "bootstrap-css": {
+      "main": [
+        "css/bootstrap.css",
+        "css/bootstrap-theme.css"
+      ]
+    }
+  },
+  "resolutions": {
+    "angular": "^1.6.4"
+  }
+}

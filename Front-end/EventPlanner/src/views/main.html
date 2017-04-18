@@ -1,0 +1,56 @@
+<style>
+    md-content {
+        background-color: transparent;
+    }
+
+    md-card {
+        background-color: transparent;
+    }
+
+</style>
+
+<div ng-controller="EventsCtrl as pv">
+
+    <div uib-carousel id="eventsCarousel" active="0" interval="5000">
+        <div uib-slide ng-repeat="item in pv.range(pv.getNumberOfPages()) track by $index" index="$index">
+
+            <md-content class="md-padding" layout-xs="column" layout="row" layout-wrap>
+                <div flex-xs flex-gt-xs="25" layout="column" layout-wrap
+                     ng-repeat="item in pv.getCurrentPage($index)">
+                    <md-card>
+                        <md-card-title>
+
+                            <md-card-title-text>
+                                <span class="md-headline glyphicon glyphicon-pushpin"> {{item.title}} </span>
+                            </md-card-title-text>
+
+                            <md-card-title-media>
+                                <div class="md-media-sm card-media">{{item.date}}</div>
+                            </md-card-title-media>
+
+                        </md-card-title>
+
+                        <div>
+                            <p> {{ item.description }}</p>
+                            <p> Start time: {{item.startTime}} </p>
+                            <p> End time: {{item.endTime}} </p>
+                        </div>
+
+
+                        <ui-gmap-google-map center="pv.map.center" zoom='pv.map.zoom'>
+                            <ui-gmap-marker coords="item.coords" idKey="0"></ui-gmap-marker>
+                        </ui-gmap-google-map>
+
+                        <md-card-actions layout="row" layout-align="end center">
+                            <md-button class="btn btn-info">
+                                <span class="glyphicon glyphicon-heart" style="color:red"></span>
+                                Add
+                            </md-button>
+                        </md-card-actions>
+                    </md-card>
+                </div>
+            </md-content>
+        </div>
+    </div>
+</div>
+
