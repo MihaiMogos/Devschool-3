@@ -6,12 +6,14 @@ import lombok.Setter;
 import lombok.experimental.Tolerate;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Id;
 
 /**
  * Created by Mihai MOGOS on 20/04/17.
  */
 @Getter @Setter @Builder
+@Entity
 public class Employee {
     @Tolerate
     public Employee(){}

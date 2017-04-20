@@ -1,7 +1,9 @@
 package jsf.model.employee;
 
+import ejb.EmployeeFacade;
 import jpa.Employee;
 
+import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import java.io.Serializable;
@@ -22,8 +24,10 @@ public class EmployeeBean implements Serializable{
         Employee.builder().id(5).name("Venkat Subramaniam").salary(10000).build()
     );
 
+    @EJB
+    private EmployeeFacade employeeFacade;
 
     public List<Employee> getEmployees(){
-        return employees;
+        return employeeFacade.getEmployees();
     }
 }
