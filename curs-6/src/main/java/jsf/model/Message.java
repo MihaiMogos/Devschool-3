@@ -9,7 +9,7 @@ import javax.faces.bean.RequestScoped;
 /**
  * Created by Mihai MOGOS on 20/04/17.
  */
-@ManagedBean(name = "message", eager = true)
+@ManagedBean(name = "message")
 @RequestScoped
 public class Message {
     @Getter @Setter
