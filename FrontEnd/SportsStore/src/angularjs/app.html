@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app="sportsStore">
+
+<head>
+    <title>SportsStore</title>
+    <script src="bower_components/angular/angular.js"></script>
+    <link href="bower_components/bootstrap-css/css/bootstrap.css" rel="stylesheet" />
+    <link href="bower_components/bootstrap-css/css/bootstrap-theme.css" rel="stylesheet" />
+</head>
+
+<body ng-controller="sportsStoreCtrl as vm">
+    <script type="text/javascript" src="controllers/app.module.js"></script>
+    <script type="text/javascript" src="services/app.service.js"></script>
+    <script type="text/javascript" src="controllers/sportsStore.js"></script>
+    <script type="text/javascript" src="controllers/productListCtrl.js"></script>
+    <script type="text/javascript" src="controllers/checkoutController.js"></script>
+    <script type="text/javascript" src="filters/customFilters.js"></script>
+    <script type="text/javascript" src="components/cart/cart.js"></script>
+    <script src="ngmodules/bower_components/angular-route/angular-route.js"></script>
+    <div class="navbar navbar-inverse">
+        <a class="navbar-brand" href="#">SPORTS STORE</a>
+        <cart-summary></cart-summary>
+    </div>
+    <div class="alert alert-danger" ng-show="vm.data.error">
+        The product data was not loaded.
+        <a href="/app.html" class="alert-link">Click here to try again</a>
+    </div>
+    <ng-view/>
+
+</body>
+
+</html>
