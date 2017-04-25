@@ -1,0 +1,9 @@
+.jumbotron {
+    text-align: center;
+}
+
+.body {
+    background: #ffffff url("#{resource['images:background.jpg']}");
+    background-repeat: repeat-x;
+    background-repeat: repeat-y;
+}

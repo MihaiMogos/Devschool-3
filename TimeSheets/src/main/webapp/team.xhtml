@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+>
+
+<h:head>
+    <h:outputStylesheet library="css" name="teamStyle.css"> </h:outputStylesheet>
+    <h:outputStylesheet library="css" name="table-style.css"> </h:outputStylesheet>
+    <h:outputStylesheet name="vendor/bootstrap-css/css/bootstrap.css"> </h:outputStylesheet>
+    <h:outputStylesheet name="vendor/bootstrap-css/css/bootstrap-theme.css"> </h:outputStylesheet>
+    <h:outputStylesheet library="webjars" name="font-awesome/4.6.3/css/font-awesome-jsf.css"/>
+</h:head>
+
+<h:body style="background-image: url('resources/images/background.jpg')">
+
+    <div class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/projects.xhtml">Time Sheets</a>
+            </div>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/login.xhtml"><span class="fa fa-sign-in"></span> Login</a></li>
+            </ul>
+
+        </div>
+    </div>
+
+    <div style="margin-bottom: 50px; text-align: center; color: black; font-weight: bold; text-align: center">
+        <h2>Choose your awesome team. :)</h2>
+    </div>
+
+    <p:ring id="custom" value="#{teamBean.teams}" var="team" styleClass="image-ring" easing="easeInOutBack">
+        <p:outputPanel style="text-align: center;" layout="block">
+            <p:commandButton rendered="false">
+                <f:setPropertyActionListener value="#{team}" target="#{teamBean.selectedTeam}"/>
+            </p:commandButton>
+            <p:graphicImage id="img" name="images/#{team.name.toLowerCase()}.jpg" width="200px"/>
+
+            <h:outputLink value="projects.xhtml" id="redirectLink">
+                <f:param name="faces-redirect" value="true"/>
+                <f:param name="id" value="#{team.id}"/>
+                <span class="fa fa-sign-in"/> Is this your team? :)
+            </h:outputLink>
+
+        </p:outputPanel>
+    </p:ring>
+
+</h:body>
+</html>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+>
+
+<h:head>
+    <h:outputStylesheet library="css" name="teamStyle.css"> </h:outputStylesheet>
+    <h:outputStylesheet library="css" name="table-style.css"> </h:outputStylesheet>
+    <h:outputStylesheet name="vendor/bootstrap-css/css/bootstrap.css"> </h:outputStylesheet>
+    <h:outputStylesheet name="vendor/bootstrap-css/css/bootstrap-theme.css"> </h:outputStylesheet>
+    <h:outputStylesheet library="webjars" name="font-awesome/4.6.3/css/font-awesome-jsf.css"/>
+</h:head>
+
+<h:body style="background-image: url('resources/images/background.jpg')">
+
+    <div class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/projects.xhtml">Time Sheets</a>
+            </div>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/login.xhtml"><span class="fa fa-sign-in"></span> Login</a></li>
+            </ul>
+
+        </div>
+    </div>
+
+    <div style="text-align: center; color: black; margin-bottom: 50px; font-weight: bold; text-align: center">
+        <h1> Project: #{employeeBean.employees.get(0).project.nume} </h1>
+        <h2> Team: #{employeeBean.employees.get(0).project.team.name} </h2>
+        <h3> Pick a developer :) </h3>
+    </div>
+
+    <h:form id="form">
+        <p:dataGrid var="employee" value="#{employeeBean.employees}" columns="3" layout="grid"
+                    rows="12" paginator="true" id="cars"
+                    paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                    rowsPerPageTemplate="6,12,16">
+
+            <f:facet name="header">
+                <span class="fa fa-hourglass-half"></span> Team
+            </f:facet>
+
+            <p:panel header="#{employee.id}" style="text-align:center">
+                <h:panelGrid columns="1" style="width:100%">
+                    <p:graphicImage name="images/badges/#{employee.id}.jpg" width="100px" height="100px"/>
+
+                    <h:outputText value="#{employee.name}"/>
+                    <h:outputLink value="calendar.xhtml" id="redirectLink">
+                        <f:param name="faces-redirect" value="true"/>
+                        <f:param name="id" value="#{employee.id}"/>
+                        <span class="fa fa-calendar"/> Display calendar
+                    </h:outputLink>
+
+                    <p:commandLink oncomplete="PF('employeeDialog').show()" title="View Detail">
+                        <h:outputText styleClass="ui-icon ui-icon-clock" style="margin:0 auto;"/>
+                        <f:setPropertyActionListener value="#{employee}" target="#{employeeBean.selectedEmployee}"/>
+                    </p:commandLink>
+                </h:panelGrid>
+            </p:panel>
+        </p:dataGrid>
+
+        <p:dialog header="Employee Info" widgetVar="employeeDialog" modal="true" showEffect="fade" hideEffect="fade"
+                  resizable="false">
+
+
+            <div class="form-group">
+                <label for="date">Date:</label>
+                <div>
+                    <input value="#{employeeBean.date}" class="form-control" id="date"/>
+                </div>
+            </div>
+
+            <div>
+                <label for="hours">Hours:</label>
+                <div>
+                    <input value="#{employeeBean.hours}" class="form-control" id="hours"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="text-center">
+                    <h:commandButton
+                            action="#{bookingBean.add(employeeBean.date, employeeBean.hours, employeeBean.selectedEmployee.project.id, employeeBean.selectedEmployee.project.team.id)}"
+                            class="btn btn-default"/>
+                </div>
+            </div>
+        </p:dialog>
+    </h:form>
+</h:body>
+</html>

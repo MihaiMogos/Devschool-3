@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+    <title>Registration Page</title>
+    <h:outputStylesheet name="vendor/bootstrap-css/css/bootstrap.css"> </h:outputStylesheet>
+    <h:outputStylesheet name="vendor/bootstrap-css/css/bootstrap-theme.css"> </h:outputStylesheet>
+</h:head>
+
+<h:body>
+    <f:view>
+        <h:form id="registerForm">
+            <table>
+                <tr>
+                    <td><h:outputText value="Enter Your Name:"/></td>
+                    <td><h:inputText id="fname" value="#{loginBean.nume}"
+                                     required="true" requiredMessage="Please enter your first name"/></td>
+                    <td><h:message for="fname" style="color:red"/></td>
+                </tr>
+                <tr>
+                    <td><h:outputText value="Enter Your email:"/></td>
+                    <td><h:inputText id="email" value="#{loginBean.email}"
+                                     required="true" requiredMessage="Please enter your email id"/></td>
+                    <td><h:message for="email" style="color:red"/></td>
+                </tr>
+                <tr>
+                    <td><h:outputText value="Enter Password :"/></td>
+                    <td><h:inputSecret id="psw" value="#{loginBean.parola}"
+                                       required="true" requiredMessage="Please enter your password"/></td>
+                    <td><h:message for="psw" style="color:red"/></td>
+                </tr>
+                <tr>
+                    <td/>
+                    <td><h:commandButton value="Register" action="#{loginBean.add}"/></td>
+                </tr>
+                <tr>
+                    <td><h:outputLink value="login.xhtml">Already have an account?</h:outputLink></td>
+                </tr>
+            </table>
+        </h:form>
+    </f:view>
+</h:body>
+</html>
