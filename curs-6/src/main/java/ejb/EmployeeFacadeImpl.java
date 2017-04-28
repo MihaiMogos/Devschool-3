@@ -3,6 +3,8 @@ package ejb;
 import jpa.Employee;
 
 import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -22,5 +24,10 @@ public class EmployeeFacadeImpl implements EmployeeFacade{
         //JPQL query
         Query query = entityManager.createQuery("SELECT e FROM Employee e");
         return (List<Employee>)query.getResultList();
+    }
+
+    @Override
+    public void addEmployee(Employee employee) {
+        entityManager.persist(employee);
     }
 }
