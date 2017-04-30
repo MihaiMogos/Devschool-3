@@ -15,7 +15,7 @@
     <h:dataTable value="#{employeeBean.employees}" var="e"
                  styleClass="employee-table"
                  headerClass="employee-table-header"
-                 rowClasses="employee-table-odd-row,employee-table-even-row" >
+                 rowClasses="employee-table-odd-row,employee-table-even-row">
 
         <h:column>
             <f:facet name="header">Employees Id</f:facet>
@@ -32,6 +32,11 @@
             #{e.salary}
         </h:column>
     </h:dataTable>
+
+    <h:form>
+        <h:outputText value="Add new employee"/>
+        <h:outputLink value="employeeAdd.xhtml"> Here </h:outputLink>
+    </h:form>
 
 </h:body>
 </html>

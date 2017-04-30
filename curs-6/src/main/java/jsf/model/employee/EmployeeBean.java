@@ -1,7 +1,7 @@
 package jsf.model.employee;
 
 import jpa.Employee;
-import jpa.ejb.EmployeeFacade;
+import ejb.EmployeeFacade;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
