@@ -65,33 +65,32 @@
                 </h:panelGrid>
             </p:panel>
         </p:dataGrid>
-
-        <p:dialog header="Employee Info" widgetVar="employeeDialog" modal="true" showEffect="fade" hideEffect="fade"
-                  resizable="false">
-
-
-            <div class="form-group">
-                <label for="date">Date:</label>
-                <div>
-                    <input value="#{employeeBean.date}" class="form-control" id="date"/>
-                </div>
-            </div>
-
-            <div>
-                <label for="hours">Hours:</label>
-                <div>
-                    <input value="#{employeeBean.hours}" class="form-control" id="hours"/>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="text-center">
-                    <h:commandButton
-                            action="#{bookingBean.add(employeeBean.date, employeeBean.hours, employeeBean.selectedEmployee.project.id, employeeBean.selectedEmployee.project.team.id)}"
-                            class="btn btn-default"/>
-                </div>
-            </div>
-        </p:dialog>
     </h:form>
+    <p:dialog header="Employee Info" widgetVar="employeeDialog" modal="true" showEffect="fade" hideEffect="fade"
+              resizable="false">
+
+
+        <div class="form-group">
+            <label for="date">Date:</label>
+            <div>
+                <input value="#{employeeBean.date}" class="form-control" id="date"/>
+            </div>
+        </div>
+
+        <div>
+            <label for="hours">Hours:</label>
+            <div>
+                <input value="#{employeeBean.hours}" class="form-control" id="hours"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="text-center">
+                <h:commandButton
+                        action="#{bookingBean.add(employeeBean.date, employeeBean.hours, employeeBean.selectedEmployee.project.id, employeeBean.selectedEmployee.project.team.id)}"
+                        class="btn btn-default"/>
+            </div>
+        </div>
+    </p:dialog>
+
 </h:body>
 </html>

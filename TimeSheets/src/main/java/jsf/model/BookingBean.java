@@ -20,7 +20,7 @@ public class BookingBean implements Serializable {
 
     public String add(String date, int hours, int project_id, int team_id) {
         bookingFacade.bookNow(date, hours, project_id, team_id);
-        return "home";
+        return null;
     }
 
     public List<Booking> getBookingForEmployee() {
