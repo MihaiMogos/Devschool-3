@@ -24,4 +24,10 @@ public class EmployeesFacadeImplementation implements EmployeeFacade {
     public void addEmployee(Employee employee) {
         entityManager.persist(employee);
     }
+
+    @Override
+    public void deleteEmployee(Employee employee) {
+        Employee bundle = entityManager.merge(employee);
+        entityManager.remove(bundle);
+    }
 }

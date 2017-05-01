@@ -1,0 +1,21 @@
+{
+  "name": "curs-6",
+  "homepage": "https://github.com/tachelavinia/Devschool-3",
+  "authors": [
+    "Lavinia Tache <lavinia.tachee@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "angularjs#^1.6.4",
+    "bootstrap-css": "^3.3.7"
+  }
+}

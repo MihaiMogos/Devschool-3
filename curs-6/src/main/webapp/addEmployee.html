@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en" ng-app="employeesApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AddEmployee</title>
+
+    <style>
+        .ng-invalid:not(.no-change) {
+            background-color: lightpink;
+        }
+
+        span.error {
+            color: red;
+            font-weight: bold;
+        }
+
+        h3 {
+            text-align: center;
+            color: #9acfea;
+        }
+
+        p {
+            text-align: center;
+            color: #9acfea;
+        }
+    </style>
+
+    <link rel="stylesheet" href="resources/vendor/bootstrap-css/css/bootstrap-theme.css">
+    <link rel="stylesheet" href="resources/vendor/bootstrap-css/css/bootstrap.css">
+</head>
+<body ng-controller="EmployeeCtrl as vm">
+<h3>Add new employee :)</h3>
+<form name="eventForm" novalidate class="no-change">
+    <div class="form-group row col-sm-6 col-sm-offset-3">
+        <label> id</label>
+        <input name="id" class="form-control"
+               ng-model="vm.newEmployee.id"/>
+    </div>
+
+    <div class="form-group row col-sm-6 col-sm-offset-3">
+        <label> Name </label>
+        <input name="nameE" class="form-control"
+               ng-model="vm.newEmployee.name" required/>
+        <span class="error" ng-show="eventForm.nameE.$error.required">
+                Please enter a name
+            </span>
+    </div>
+
+    <div class="form-group row col-sm-6 col-sm-offset-3">
+        <label>Salary</label>
+        <input name="salary" class="form-control"
+               ng-model="vm.newEmployee.salary" required/>
+        <span class="error" ng-show="eventForm.salary.$error.required">
+                Please enter a salary
+        </span>
+    </div>
+    <div class="row col-sm-6 col-sm-offset-3 text-center">
+        <button type="submit" ng-click="vm.addEmployee()" class="btn btn-primary">Add</button>
+        <!--type="button" ng-disabled="eventForm.$invalid && vm.isInvalidId(vm.newEmployee.id)"-->
+    </div>
+</form>
+
+<script type="text/javascript" src="resources/vendor/angular/angular.js"></script>
+<script type="text/javascript" src="resources/js/employee.module.js"></script>
+<script type="text/javascript" src="resources/js/EmployeeCtrl.js"></script>
+</body>
+</html>

@@ -1,7 +1,7 @@
 package jsf.model.employee;
 
-import jpa.Employee;
 import ejb.EmployeeFacade;
+import jpa.Employee;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -27,7 +27,7 @@ public class EmployeeBeanAdd {
         if (id != 0) {
             Employee newEmployee = Employee.builder().id(id).name(name).salary(salary).build();
             employeeFacade.addEmployee(newEmployee);
-            return "employees";
+            return "employess";
         }
         return "employeesInvalid";
     }

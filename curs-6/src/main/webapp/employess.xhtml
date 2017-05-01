@@ -31,6 +31,13 @@
             <f:facet name="header">Employees Salary</f:facet>
             #{e.salary}
         </h:column>
+
+        <h:column>
+            <h:form>
+                <h:commandButton onclick="if (! confirm('Really want to do that?')) return false"
+                                 action="#{employeeBeanDelete.delete(e.id)}" value="Delete"/>
+            </h:form>
+        </h:column>
     </h:dataTable>
 
     <h:form>
