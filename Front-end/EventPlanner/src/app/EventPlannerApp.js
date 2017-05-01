@@ -1,3 +1,3 @@
 (function () {
-    angular.module("eventApp", ["ngRoute", "firebase", "Datepicker", "angularjs-datetime-picker", 'ngMaterial', "ui.bootstrap", "uiGmapgoogle-maps"]);
+    angular.module("eventApp", ["ngRoute", "firebase", "Datepicker", "mwl.calendar", "angularjs-datetime-picker", 'ngMaterial', "ui.bootstrap", "uiGmapgoogle-maps"]);
 }());

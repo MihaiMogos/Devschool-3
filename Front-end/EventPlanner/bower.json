@@ -29,7 +29,8 @@
     "angularjs-datetime-picker": "^0.1.20",
     "angular-bootstrap": "^2.5.0",
     "angular-google-maps": "^2.4.1",
-    "ngmap": "^1.18.4"
+    "ngmap": "^1.18.4",
+    "angular-bootstrap-calendar": "^0.29.0"
   },
   "overrides": {
     "bootstrap-css": {

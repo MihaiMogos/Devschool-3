@@ -5,8 +5,12 @@
 
         vm.event = {};
         vm.events = [];
+        vm.calendarEvents = [];
         vm.newEvent = {};
         vm.pageSize = 4;
+        vm.viewDate = Date.now();
+        vm.calendarView = "month";
+        vm.title = "Events";
         var ref = firebase.database().ref("/events");
         vm.events = $firebaseArray(ref);
         vm.totalEvents = 0;
@@ -33,8 +37,22 @@
             vm.totalEvents = arr.length;
 
             for (var i = 0; i < arr.length; i++) {
+                var dateNameStart = $filter("date")(vm.events[i].date + " " + vm.events[i].startTime, "M/d/yy h:mm");
+                var dateValueStart = new Date(dateNameStart);
+                var dateNameEnd = $filter("date")(vm.events[i].date + " " + vm.events[i].endTime, "M/d/yy h:mm");
+                var dateValueEnd = new Date(dateNameEnd);
+                vm.calendarEvents[i] = {};
+                vm.calendarEvents[i].startsAt = dateValueStart;
+                vm.calendarEvents[i].endsAt = dateValueEnd;
+                vm.calendarEvents[i].title = vm.events[i].title;
+                vm.calendarEvents[i].color = {
+                    primary: "#ff0000",
+                    secondary: "#00ff00"
+                };
+
                 vm.findMarkersForAddress(i);
             }
+            console.log(vm.calendarEvents);
         });
 
         vm.getNumberOfPages = function () {
