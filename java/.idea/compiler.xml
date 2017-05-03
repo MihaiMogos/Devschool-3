@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="curs-1" />
+        <module name="curs-3" />
+        <module name="curs-4" />
+        <module name="curs-6" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="curs-1" target="1.8" />
+      <module name="curs-2" target="1.8" />
+      <module name="curs-3" target="1.8" />
+      <module name="curs-4" target="1.8" />
+      <module name="curs-6" target="1.8" />
+      <module name="devschool-3" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

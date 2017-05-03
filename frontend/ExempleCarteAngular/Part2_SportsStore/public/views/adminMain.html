@@ -1,0 +1,11 @@
+<div class="panel panel-default row" ng-controller="mainCtrl as vms">
+	<div class="col-xs-3 panel-body">
+		<a ng-repeat="item in vms.screens" class="btn btn-block btn-default"
+		   ng-class="{'btn-primary': item == vms.current }" ng-click="vms.setScreen($index)">
+			{{item}}
+		</a>
+	</div>
+	<div class="col-xs-8 panel-body" >
+		<div ng-include="vms.getScreen()" />
+	</div>
+</div>

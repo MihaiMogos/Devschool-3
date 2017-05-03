@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en" ng-app="toDoApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <!-- AngularFire -->
+    <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
+
+    <title>Hello AngularJS</title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script>
+
+    <style type="text/css">
+        .footer {
+            position: relative;
+            text-align: center;
+            bottom: 1px;
+            width: 100%;
+            height: 15px;
+
+        }
+    </style>
+
+
+</head>
+
+<body ng-controller="ToDoCtrl as vm" style="background-color:darkgrey" >
+
+<div class="container">
+    <img class="img-responsive" src="12.jpg" alt="Chania" width="75" height="70" align="right">
+    <h1 ng-if="vm.toDo && vm.toDo.user" style="color:#ffdb58">Event Planner<b style="color: midnightblue">  {{vm.toDo.user}}</b></h1>
+
+
+
+
+    <div class="form-group row">
+        <label for="example-date-local-input" class="col-2 col-form-label">Date</label>
+        <div class="col-10">
+            <input class="form-control" type="date" value="2011-08-19"
+                   id="example-date-local-input" name="bday" ng-model="data">
+
+        </div>
+    </div>
+    <span>Name</span>
+    <input type="text" class="form-control" placeholder="Enter the name" ng-model="vm.actionName ">
+    <span>Description: </span>
+    <input type="text" class="form-control" placeholder="Description....." ng-model="vm.actionDescription ">
+    <span>Location: </span>
+    <input type="text" class="form-control" placeholder="" ng-model="vm.actionLocation ">
+
+
+    <div class="form-group">
+        <label for="sel1">Category :</label>
+        <select class="form-control" id="sel1" ng-model="projects">
+
+            <option value="personal">Personal</option>
+            <option value="job">Job</option>
+            <option value="weekend">Weekend</option>
+            <option value="travel">Travel</option>
+        </select>
+    </div>
+
+    <button type="button"
+            class="btn btn-success"
+            ng-click="vm.add(data,vm.actionName,vm.actionDescription,vm.actionLocation,projects)">Add to list</button>
+
+
+
+
+    <div class="row" style="float: top; ">
+
+        <div class="col-sm-4" style="float:left ; width: 25%;background-color:darkslategrey;">
+            <ul class="list-group" ng-if="vm.toDo && vm.toDo.todos">
+
+                <h1 style="background-color:dimgrey;">Personal</h1>
+                <li style="background-color: dimgrey;" class="list-group-item"
+                    ng-repeat="todo in vm.toDo.todos  | filter: {done: 'false',projects: 'personal'}| orderBy: 'data'">
+                    <input type="checkbox" ng-checked="todo.done" ng-model="todo.done">
+                    <h1>{{todo.name}} </h1> <b>Data:</b> {{todo.data | date :  "dd.MM.y"}}
+                </li>
+            </ul>
+        </div>
+
+
+
+        <div class="col-sm-4" style="float:left ; width: 25%;background-color:darkslategrey;">
+            <ul class="list-group" ng-if="vm.toDo && vm.toDo.todos">
+
+                <h1 style="background-color:darkslategrey;color: white ">Job</h1>
+                <li style="background-color: #ff6633" class="list-group-item"
+                    ng-repeat="todo in vm.toDo.todos | orderBy: 'data' | filter: {done: 'false',projects: 'job'}">
+
+                    <input type="checkbox" ng-checked="todo.done" ng-model="todo.done">
+                    <h1>{{todo.name}} </h1> <b>Data:</b> {{todo.data| date :  "dd.MM.y" }}
+
+                </li>
+            </ul>
+        </div>
+
+
+        <div class="col-sm-4" style="float:left ; width: 25%;background-color:darkslategrey;">
+            <ul class="list-group" ng-if="vm.toDo && vm.toDo.todos">
+                <h1 style="background-color:dimgrey;">Weekend</h1>
+                <li style="background-color: #9fff80" class="list-group-item"
+                    ng-repeat="todo in vm.toDo.todos | orderBy: 'data' | filter: {done: 'false',projects: 'weekend'}">
+                    <input type="checkbox" ng-checked="todo.done" ng-model="todo.done">
+                    <h1>{{todo.name}} </h1> <b>Data:</b> {{todo.data| date :  "dd.MM.y" }}
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="col-sm-4" style="float:left ; width: 25%;background-color:darkslategrey;">
+            <ul class="list-group" ng-if="vm.toDo && vm.toDo.todos">
+                <h1 style="background-color:darkslategrey;color: white">Travel</h1>
+                <li class="list-group-item"
+                    ng-repeat="todo in vm.toDo.todos | orderBy: 'data' | filter: {done: 'false', projects: 'travel'}">1
+                    <input type="checkbox" ng-checked="todo.done" ng-model="todo.done">
+                    <h1>{{todo.name}} </h1> <b>Data:</b> {{todo.data | date :  "dd.MM.y"}}
+
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <div class="footer" style="background-color:lightgoldenrodyellow;">
+        <div class="jumbotron text-center">
+            <h1 ng-if=" (vm.toDo.todos | filter: {done: 'true'}).length >0  ">Solved tasks:</h1>
+
+            <ul class="list-group" ng-if="vm.toDo && vm.toDo.todos">
+                <li class="list-group-item"
+                    style="background-color: lightgray"
+                    ng-repeat="todo in vm.toDo.todos | orderBy: 'name' | filter: {done: 'true'}">
+                    <input type="checkbox" ng-checked="todo.done" ng-model="todo.done">
+                    <b>Name:</b> {{todo.name}} <b>Category:</b> {{todo.projects}}
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+</div>
+
+<script src="toDo.app.js"></script>
+<script src="toDo.ctrl.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
+<script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyCKCOtP6O8OtlOHACzKCaQVRDiEDBkru7Y",
+        authDomain: "todolist-60e8d.firebaseapp.com",
+        databaseURL: "https://todolist-60e8d.firebaseio.com",
+        projectId: "todolist-60e8d",
+        storageBucket: "todolist-60e8d.appspot.com",
+        messagingSenderId: "890661225670"
+    };
+    firebase.initializeApp(config);
+</script>
+
+
+</body>
+
+</html>

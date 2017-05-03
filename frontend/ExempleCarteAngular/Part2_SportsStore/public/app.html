@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html ng-app="sportsStore">
+<head>
+    <title>SportsStore</title>
+    <link href="bootstrap.css" rel="stylesheet" />
+    <link href="bootstrap-theme.css" rel="stylesheet" />
+    <base href="/app.html">
+
+</head>
+<body ng-controller="sportsStoreCtrl as vm">
+    <div class="navbar navbar-inverse">
+        <a class="navbar-brand" href="#">SPORTS STORE</a>
+        <cart-summary />
+    </div>
+    <div class="alert alert-danger" ng-show="vm.data.error">
+        Error ({{vm.data.error.status}}). The product data was not loaded.
+        <a href="/app.html" class="alert-link">Click here to try again</a>
+    </div>
+    
+    <ng-view />
+    
+    <script src="angular.js"></script>
+    <script src="angular-route.js"></script>
+    <script src="src/customFilters.js"></script>
+    <script src="src/sportsStore.js"></script>
+    <script src="src/sportsStoreCtrl.js"></script>
+    <script src="src/routeConfig.js"></script>
+    <script src="src/productListCtrl.js"></script>
+    <script src="src/cart.js"></script>
+    <script src="src/cartFactory.js"></script>
+    <script src="src/cartDirective.js"></script>
+    <script src="src/checkoutCtrl.js"></script>
+ 
+</body>
+</html>

@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="curs-6:war">
+    <output-path>$PROJECT_DIR$/curs-6/target</output-path>
+    <root id="archive" name="curs-6-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="curs-6:war exploded" />
+    </root>
+  </artifact>
+</component>

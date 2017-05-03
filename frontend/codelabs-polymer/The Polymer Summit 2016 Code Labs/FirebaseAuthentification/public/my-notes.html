@@ -1,0 +1,60 @@
+
+
+
+<link rel="import" href="bower_components/polymer/polymer.html">
+<link rel="import" href="bower_components/polymerfire/firebase-auth.html">
+<link rel="import" href="bower_components/polymerfire/firebase-query.html">
+<link rel="import" href="bower_components/paper-input/paper-input.html">
+<link rel="import" href="bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="bower_components/iron-icons/iron-icons.html">
+<dom-module id="my-notes">
+    <template>
+
+
+        <div class="card">
+            <firebase-auth user="{{user}}"></firebase-auth>
+            <firebase-query
+                    id="query"
+                    path="notes"
+                    data="{{notes}}">
+            </firebase-query>
+
+            <div id="notes" hidden$="[[!user]]">
+                <ul id="notes-list">
+                    <template is="dom-repeat" items="[[notes]]" as="note">
+                        <li>
+                            <p class="content">[[note.content]]</p>
+                            <paper-icon-button icon="clear" note="[[note]]" on-tap="remove"></paper-icon-button>
+                        </li>
+                    </template>
+                </ul>
+                <paper-input id="input" label="Take a note..."></paper-input>
+                <div id="notes-controls">
+                    <paper-button id="add" on-tap="add">Add</paper-button>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <script>
+        Polymer({
+            is: 'my-notes',
+            properties: {
+                notes: {
+                    type: Object
+                }
+            },
+            add: function() {
+                this.$.query.ref.push({
+                    content: this.$.input.value
+                });
+                this.$.input.value = null;
+            },
+            remove: function(e) {
+                var key = e.currentTarget.note.$key;
+                this.$.query.ref.child(key).remove();
+            }
+        });
+    </script>
+</dom-module>

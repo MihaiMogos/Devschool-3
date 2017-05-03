@@ -1,0 +1,19 @@
+{
+  "name": "angular",
+  "version": "1.6.4",
+  "license": "MIT",
+  "main": "./angular.js",
+  "ignore": [],
+  "dependencies": {
+    "angular": "^1.6.3",
+    "bootstrap-css": "^3.3.7"
+  },
+  "overrides": {
+    "bootstrap-css": {
+      "main": [
+        "css/bootstrap.css",
+        "css/bootstrap-theme.css"
+      ]
+    }
+  }
+}

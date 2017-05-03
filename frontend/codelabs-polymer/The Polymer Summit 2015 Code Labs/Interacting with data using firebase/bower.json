@@ -1,0 +1,22 @@
+{
+  "name": "firebase",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "AndreiDinica <dinica.mihai.andrei@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "iron-elements": "PolymerElements/iron-elements#^1.0.0",
+    "paper-elements": "PolymerElements/paper-elements#^1.0.1",
+    "firebase-element": "PolymerElements/firebase-element#^1.0.16"
+  }
+}

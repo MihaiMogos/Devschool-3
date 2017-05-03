@@ -1,0 +1,23 @@
+{
+  "name": "FirebaseAuthentification",
+  "authors": [
+    "AndreiDinica <dinica.mihai.andrei@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.9.1",
+    "polymerfire": "firebase/polymerfire#^0.11.2",
+    "paper-button": "PolymerElements/paper-button#^1.0.15"
+  }
+}

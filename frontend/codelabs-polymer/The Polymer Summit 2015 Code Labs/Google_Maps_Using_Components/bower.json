@@ -1,0 +1,23 @@
+{
+  "name": "Google_Maps_Using_Components",
+  "authors": [
+    "AndreiDinica <dinica.mihai.andrei@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "google-map": "GoogleWebComponents/google-map#^1.2.0",
+    "iron-elements": "PolymerElements/iron-elements#^1.0.10",
+    "paper-elements": "PolymerElements/paper-elements#^1.0.7",
+    "paper-item": "PolymerElements/paper-item#^1.2.2"
+  }
+}

@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en" ng-app="toDoApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <title>Hello AngularJS</title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script>
+
+    <style type="text/css">
+        .footer {
+            position: relative;
+            text-align: center;
+            bottom: 1px;
+            width: 100%;
+            height: 15px;
+
+        }
+    </style>
+
+
+</head>
+
+<body ng-controller="ToDoCtrl as vm" style="background-color:lavender;">
+
+<div class="container">
+    <img class="img-responsive" src="12.jpg" alt="Chania" width="75" height="70" align="right">
+    <h1 ng-if="vm.toDo && vm.toDo.user">{{vm.toDo.user}}'s to do list</h1>
+
+
+    <span>Todo</span>
+    <input type="text" class="form-control" placeholder="Enter a new todo" ng-model="vm.actionText ">
+
+    <div class="form-group row">
+        <label for="example-datetime-local-input" class="col-2 col-form-label">Date and time</label>
+        <div class="col-10">
+            <input class="form-control" type="datetime-local" value="2011-08-19T13:45:00"
+                   id="example-datetime-local-input" name="bday" ng-model="date">
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label for="sel1">Select :</label>
+        <select class="form-control" id="sel1" ng-model="task">
+
+            <option value="personal">Personal</option>
+            <option value="shopping">Shopping</option>
+            <option value="errands">Errands</option>
+            <option value="toWatch">Movies to watch</option>
+        </select>
+    </div>
+
+    <button type="button" class="btn btn-success" ng-click="vm.add(vm.actionText,date,task) ">Add to list</button>
+
+
+
+
+
+    <div class="row" style="float: top; ">
+
+        <div class="col-sm-4" style="float: left; width: 25%;">
+            <ul class="list-group" ng-if="vm.toDo && vm.toDo.todos">
+
+                <h1 style="background-color:#66ff33;">Personal</h1>
+                <li class="list-group-item"
+                    ng-repeat="todo in vm.toDo.todos  | filter: {done: 'false',projects: 'personal'}| orderBy: 'data'">
+                    <input type="checkbox" ng-checked="todo.done" ng-model="todo.done">
+                    <h1>{{todo.action}} </h1> <b>Time:</b> {{todo.data | date: "short"}}
+                </li>
+            </ul>
+        </div>
+
+
+
+        <div class="col-sm-4" style="float:left ; width: 25%;">
+            <ul class="list-group" ng-if="vm.toDo && vm.toDo.todos">
+
+                <h1 style="background-color:#cc3300;color: white ">Shopping</h1>
+                <li style="background-color: #ff6633" class="list-group-item"
+                    ng-repeat="todo in vm.toDo.todos | orderBy: 'data' | filter: {done: 'false',projects: 'shopping'}">
+
+                    <input type="checkbox" ng-checked="todo.done" ng-model="todo.done">
+                    <h1>{{todo.action}} </h1> <b>Time:</b> {{todo.data | date: "short"}}
+
+                </li>
+            </ul>
+        </div>
+
+
+        <div class="col-sm-4" style="float: left; width: 25%;">
+            <ul class="list-group" ng-if="vm.toDo && vm.toDo.todos">
+                <h1 style="background-color:#66ff33;">Errands</h1>
+                <li style="background-color: #9fff80" class="list-group-item"
+                    ng-repeat="todo in vm.toDo.todos | orderBy: 'data' | filter: {done: 'false',projects: 'errands'}">
+                    <input type="checkbox" ng-checked="todo.done" ng-model="todo.done">
+                    <h1>{{todo.action}} </h1> <b>Time:</b> {{todo.data | date: "short"}}
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="col-sm-4" style="float: right; width: 25%;">
+            <ul class="list-group" ng-if="vm.toDo && vm.toDo.todos">
+                <h1 style="background-color:#cc3300;color: white">Movies to watch</h1>
+                <li class="list-group-item"
+                    ng-repeat="todo in vm.toDo.todos | orderBy: 'data' | filter: {done: 'false', projects: 'toWatch'}">1
+                    <input type="checkbox" ng-checked="todo.done" ng-model="todo.done">
+                    <h1>{{todo.action}} </h1> <b>Time:</b> {{todo.data | date: "short"}}
+
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <div class="footer" style="background-color:lightgoldenrodyellow;">
+        <div class="jumbotron text-center">
+            <h1 ng-if=" (vm.toDo.todos | filter: {done: 'true'}).length >0  ">Solved tasks:</h1>
+
+            <ul class="list-group" ng-if="vm.toDo && vm.toDo.todos">
+                <li class="list-group-item"
+                    ng-repeat="todo in vm.toDo.todos | orderBy: 'action' | filter: {done: 'true'}">
+                    <input type="checkbox" ng-checked="todo.done" ng-model="todo.done">
+                    {{todo.action}}---<b>{{todo.projects}}</b>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+</div>
+
+<script src="toDo.app.js"></script>
+<script src="toDo.ctrl.js"></script>
+
+</body>
+
+</html>

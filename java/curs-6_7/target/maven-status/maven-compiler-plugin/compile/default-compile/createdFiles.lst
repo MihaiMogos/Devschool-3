@@ -1,0 +1,8 @@
+jsf\model\HelloWorld.class
+jsf\model\Message.class
+jpa\Employee.class
+jsf\model\employee\EmployeeBeanAdd.class
+ejb\EmployeeFacade.class
+ejb\EmployeeFacadeImpl.class
+jsf\model\employee\EmployeeBean.class
+jpa\Employee$EmployeeBuilder.class

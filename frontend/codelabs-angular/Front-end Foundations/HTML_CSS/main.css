@@ -1,0 +1,167 @@
+html,body,h1,h2,h3,h4,ul,ol,li,p,a{
+    padding: 0;
+    border: 0;
+    margin: 0;
+    font-size: 100%;
+    font: inherit;
+}
+a{
+    text-decoration: none;
+    color: #660000;
+}
+p{
+    color:#444444;
+    margin-bottom: 10px;
+    line-height: 24px;
+}
+ol li{
+    font-size:20px;
+}
+h1{
+    color:#000000;
+    margin-bottom: 15px;
+    margin: 0 auto;
+    font-weight: bold;
+}
+h2{
+    font-size:28px;
+    color:#000000;
+    margin-top: 15px;
+    margin:0 auto;
+    font-weight: bold;
+
+}
+h3{
+    font-size: 26px;
+    color:#444444;
+    margin-top: 15px;
+    border-bottom: 1px solid #cccccc;
+}
+h4{
+    color:#999999;
+    margin: 10px;
+}
+ul{
+    padding-left: 30px;
+}
+ol{
+    padding-left: 20px;
+}
+li{
+    margin-bottom: 5px;
+    line-height: 24px;
+}
+body{
+    padding: 15px;
+    font-size: 16px;
+}
+
+.nav{
+    padding: 0;
+    margin: 0 auto;
+    color: #ee932a;
+}
+
+.nav li{
+    padding-right: 20px;
+}
+
+.nav:last-child{
+    padding-right: 0;
+}
+
+.day-time{
+    color: #444444;
+    text-decoration: underline;
+}
+.concert-location{
+    color: #888888;
+    text-decoration: underline;
+}
+
+body{
+    padding: 0;
+    background: #555555 url("bg-title.png");
+}
+
+.header{
+    padding: 15px;
+    background: #242424 url("bg-header.png") top center no-repeat;
+
+}
+
+.content-section{
+    padding: 15px;
+    max-width: 450px;
+    margin:0 auto;
+    background: #dddddd url("bg-header.png");
+
+}
+.album{
+    border: 2px dashed;
+    padding: 10px 5px 10px 5px;
+    margin: 5px;
+}
+
+.bands-list h3 {
+    border-bottom: 0;
+    margin: 0;
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.bands-list a{
+    text-decoration: none;
+    color:#ff2244;
+}
+.bands-list li{
+    border: 1px solid #555555;
+    height: 120px;
+}
+.header img{
+    display: block;
+    margin:0 auto 15px auto;
+}
+.recording-now{
+    width: 440px;
+    height: 200px;
+    background: #ffffff url(prepe.png) center center no-repeat;
+    border: 1px solid;
+    padding: 4px;
+}
+
+.recording-now p{
+    font-size: 28px;
+    color: white;
+}
+
+.bands-list img{
+    padding-right: 15px;
+}
+
+.album img{
+    padding-right: 15px;
+}
+label, input, textarea{
+    display: block;
+}
+
+input,textarea{
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+label{
+    font-weight: bold;
+}
+
+input[type="submit"] {
+    width: 165px;
+}
+
+input[type="checkbox"] {
+    display: inline;
+}
+
+input[type="text"]{
+    width: 445px;
+}
