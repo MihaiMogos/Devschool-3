@@ -3,10 +3,7 @@ package ro.isr.devschool.rest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ro.isr.devschool.jpa.Employee;
 import ro.isr.devschool.jpa.EmployeeRepository;
 
@@ -31,6 +28,11 @@ public class EmployeeRestController {
     @RequestMapping(method = RequestMethod.GET, value = "/{id}")
     public ResponseEntity<Employee> getEmployeeWithId(@PathVariable Long id){
         return new ResponseEntity<>(employeeRepository.findOne(id), HttpStatus.OK);
+    }
+
+    @RequestMapping(method = RequestMethod.POST)
+    public ResponseEntity<?> addEmployee(@RequestBody Employee input){
+        return new ResponseEntity<>(employeeRepository.save(input), HttpStatus.CREATED);
     }
 
 }
